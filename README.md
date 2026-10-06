@@ -1,108 +1,101 @@
-# Retail Sales Demand Forecasting and Inventory Management System
+# Retail Sales Demand Forecasting & Inventory Management System
 
-## Backend
+A data-driven web application that forecasts retail product demand and provides inventory management recommendations using historical sales data.
 
-### Inputs
-1. Product details
-2. Historical sales
-3. Date
-4. Store location
-5. Inventory levels
+## 📌 Project Overview
 
-### Outputs
-1. Predicted demand
-2. Restocking suggestions
-3. Sales forecasting
-4. Inventory alerts
+The Retail Sales Demand Forecasting & Inventory Management System helps businesses analyze historical sales, forecast future demand, monitor inventory levels, and identify products that require restocking.
 
-## Technologies
+The system combines data analysis, machine learning, MySQL, Flask, HTML, CSS, and JavaScript to provide an integrated retail analytics solution.
 
+## 🚀 Features
+
+- 📊 Retail sales data analysis
+- 🔮 Demand forecasting
+- 📦 Inventory monitoring
+- ⚠️ Critical and warning stock alerts
+- 🔄 Restocking recommendations
+- 📈 Sales forecasting
+- 🏪 Store and product-level analysis
+- 🗄️ MySQL database integration
+- 🌐 Flask REST API backend
+- 💻 Interactive web frontend
+- 📋 Retail analytics dashboard
+
+## 🛠️ Technologies Used
+
+### Backend
 - Python
 - Flask
+- Flask-CORS
 - Pandas
 - NumPy
-- MySQL (database structure prepared)
-- REST API
-- HTML/CSS/JavaScript can be connected later for the frontend
+- MySQL
 
-## Backend flow
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
 
-Dataset
-   ↓
-Data Cleaning
-   ↓
-Historical Sales Analysis
-   ↓
-Demand Forecast
-   ↓
-Inventory Comparison
-   ↓
-Restocking Recommendation
-   ↓
-Inventory Alert
+### Data Science
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
+- Machine Learning
 
-## Setup
+### Database
+- MySQL 8.x
 
-### 1. Open the project folder
+## 📂 Project Components
 
-```text
-C:\Users\divya\retail_backend
-```
+- `app.py` – Flask backend and API
+- `dashboard.html` – Main dashboard
+- `forecast.html` – Demand forecasting page
+- `products.html` – Product information
+- `sales.html` – Sales analysis
+- CSS files – Frontend styling
+- JavaScript files – Frontend logic and API integration
+- `database.sql` – Database structure
+- `retail_sales.csv` – Retail sales dataset
+- `ML.ipynb` – Machine learning analysis
+- `ml_testing.ipynb` – Model testing and evaluation
+- `final_retail_demand_results.csv` – Forecasting results
 
-### 2. Install packages
+## 🔄 System Workflow
 
-```text
-pip install -r requirements.txt
-```
+Historical Sales Data  
+↓  
+Data Processing & Analysis  
+↓  
+Demand Forecasting Model  
+↓  
+Predicted Demand  
+↓  
+Inventory Analysis  
+↓  
+Stock Risk Detection  
+↓  
+Restocking Recommendation  
+↓  
+Web Dashboard
 
-### 3. Run backend
+## 📊 Output
 
-```text
-python app.py
-```
+The system provides:
 
-### 4. Open in browser
+- Predicted demand
+- Sales forecast
+- Current inventory
+- Reorder point
+- Recommended restock quantity
+- Stock status
+- Critical and warning alerts
 
-```text
-http://127.0.0.1:5000/
-```
+## ⚙️ How to Run
 
-## API endpoints
+### 1. Clone the repository
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| GET | / | Backend status |
-| GET | /api/health | Health check |
-| GET | /api/data | Sales and inventory data |
-| GET | /api/forecast | Demand + restocking + alerts |
-| GET | /api/summary | Dashboard summary |
-| POST | /api/predict | Prediction from frontend inputs |
-
-## POST /api/predict example
-
-```json
-{
-  "product": "Product A",
-  "historical_sales": [20, 25, 22, 30, 28, 35, 32],
-  "date": "2026-09-24",
-  "store_location": "Visakhapatnam",
-  "inventory_level": 40
-}
-```
-
-## Forecasting method
-
-The current version uses a simple 7-observation moving average as a baseline forecast. This is intentionally easy to understand and demonstrate during the initial project review.
-
-Later, the same API can be connected to a trained Machine Learning model such as Random Forest, XGBoost, or another time-series approach.
-
-## MySQL
-
-`database.sql` contains the database and table structure for:
-
-- Products
-- Stores
-- Sales
-- Inventory
-
-The current CSV-based backend is kept working independently so the team can test the API first. MySQL integration can then be connected without changing the frontend API design.
+```bash
+git clone https://github.com/Sru1825/retail-inventory-management.git
