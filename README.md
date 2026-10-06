@@ -92,6 +92,15 @@ The system provides:
 - Recommended restock quantity
 - Stock status
 - Critical and warning alerts
+  ## 📸 Project Screenshots
+
+### Dashboard
+
+![Retail Intelligence Dashboard](dashboard.png)
+
+### Demand Forecasting
+
+![Demand Forecasting and Inventory Management](forecast.png)
 
 ## ⚙️ How to Run
 
