@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demand Forecasting | Retail Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/forecast.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">RI</div>
+                <div>
+                    <h1>Retail Intelligence</h1>
+                    <span>Demand & Inventory</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="dashboard.html"><span>⌂</span> Dashboard</a>
+                <a class="active" href="forecast.html"><span>◈</span> Forecasting</a>
+                <a href="sales.html"><span>↗</span> Sales Analytics</a>
+                <a href="products.html"><span>▦</span> Products</a>
+            </nav>
+
+            <div class="sidebar-note">
+                <div class="live-dot"></div>
+                <div>
+                    <strong>Forecast engine</strong>
+                    <small>Connected to Flask API</small>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div>
+                    <div class="eyebrow">PREDICTIVE OPERATIONS</div>
+                    <h2>Demand Forecasting <span>& Inventory</span></h2>
+                    <p>Turn historical sales into demand signals and actionable stock decisions.</p>
+                </div>
+                <div class="system-pill">
+                    <span class="pulse"></span>
+                    Live Data
+                </div>
+            </header>
+
+            <section class="hero-grid">
+                <div class="control-card">
+                    <div class="section-title">
+                        <div>
+                            <span class="step">01</span>
+                            <h3>Forecast setup</h3>
+                        </div>
+                        <span class="auto-badge">AUTO DATA</span>
+                    </div>
+
+                    <div class="form-grid">
+                        <label>
+                            <span>Product</span>
+                            <select id="productSelect">
+                                <option value="">Loading products...</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            <span>Store location</span>
+                            <select id="locationSelect">
+                                <option value="">Select product first</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            <span>Forecast date</span>
+                            <input id="forecastDate" type="date">
+                        </label>
+
+                        <div class="data-preview">
+                            <div class="preview-icon">↺</div>
+                            <div>
+                                <span>Historical sales</span>
+                                <strong id="historyCount">—</strong>
+                                <small>latest observations loaded automatically</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stock-strip">
+                        <div>
+                            <span>Current inventory</span>
+                            <strong id="currentInventory">—</strong>
+                        </div>
+                        <div>
+                            <span>Reorder level</span>
+                            <strong id="reorderLevel">—</strong>
+                        </div>
+                        <div>
+                            <span>Latest sale</span>
+                            <strong id="latestSale">—</strong>
+                        </div>
+                    </div>
+
+                    <button id="forecastBtn" class="forecast-btn">
+                        <span>Generate Demand Forecast</span>
+                        <b>→</b>
+                    </button>
+
+                    <div id="errorBox" class="error-box hidden"></div>
+                </div>
+
+                <div class="signal-card">
+                    <div class="signal-head">
+                        <span>Inventory signal</span>
+                        <span id="alertBadge" class="status neutral">WAITING</span>
+                    </div>
+                    <div class="signal-value" id="signalValue">—</div>
+                    <p id="signalMessage">Select a product and store to evaluate the current inventory position.</p>
+                    <div class="signal-bar">
+                        <div id="signalFill"></div>
+                    </div>
+                    <div class="signal-footer">
+                        <span>Demand coverage</span>
+                        <strong id="coverageValue">—</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-head">
+                <div>
+                    <span class="step">02</span>
+                    <h3>Forecast intelligence</h3>
+                </div>
+                <span id="resultProduct" class="result-context">No forecast generated</span>
+            </section>
+
+            <section class="metric-grid">
+                <article class="metric-card primary">
+                    <div class="metric-label">Predicted demand</div>
+                    <div class="metric-number" id="predictedDemand">—</div>
+                    <div class="metric-foot">Expected sales quantity</div>
+                    <div class="metric-icon">⌁</div>
+                </article>
+
+                <article class="metric-card">
+                    <div class="metric-label">Sales forecast</div>
+                    <div class="metric-number" id="salesForecast">—</div>
+                    <div class="metric-foot">Forecasted quantity</div>
+                    <div class="metric-icon">↗</div>
+                </article>
+
+                <article class="metric-card">
+                    <div class="metric-label">Restock quantity</div>
+                    <div class="metric-number" id="restockQuantity">—</div>
+                    <div class="metric-foot">Recommended replenishment</div>
+                    <div class="metric-icon">+</div>
+                </article>
+
+                <article class="metric-card">
+                    <div class="metric-label">Reorder point</div>
+                    <div class="metric-number" id="reorderPoint">—</div>
+                    <div class="metric-foot">Recommended stock threshold</div>
+                    <div class="metric-icon">⌖</div>
+                </article>
+            </section>
+
+            <section class="analysis-grid">
+                <div class="chart-card">
+                    <div class="card-head">
+                        <div>
+                            <h3>Historical demand vs forecast</h3>
+                            <p>Latest sales observations with the generated demand signal.</p>
+                        </div>
+                        <span class="chart-tag">7 observations</span>
+                    </div>
+                    <div class="chart-wrap">
+                        <canvas id="forecastChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="decision-card">
+                    <div class="card-head">
+                        <div>
+                            <h3>Restocking decision</h3>
+                            <p>Action generated by the forecasting engine.</p>
+                        </div>
+                    </div>
+
+                    <div class="decision-main">
+                        <div id="decisionIcon" class="decision-icon">✓</div>
+                        <div>
+                            <span>Recommended action</span>
+                            <strong id="decisionText">Awaiting forecast</strong>
+                        </div>
+                    </div>
+
+                    <div class="decision-list">
+                        <div><span>Current stock</span><strong id="decisionStock">—</strong></div>
+                        <div><span>Expected demand</span><strong id="decisionDemand">—</strong></div>
+                        <div><span>Restock units</span><strong id="decisionRestock">—</strong></div>
+                    </div>
+
+                    <div class="alert-message" id="decisionMessage">
+                        Generate a forecast to receive an inventory recommendation.
+                    </div>
+                </div>
+            </section>
+<section class="input-intelligence">
+    <div class="section-heading">
+        <div>
+            <h3>Input Intelligence</h3>
+            <p>Live inputs used by the forecasting engine.</p>
+        </div>
+    </div>
+
+    <div class="input-grid">
+
+        <div class="input-item">
+            <span class="input-label">Product</span>
+            <strong id="intelProduct">—</strong>
+        </div>
+
+        <div class="input-item">
+            <span class="input-label">Historical Sales</span>
+            <strong id="intelHistory">—</strong>
+        </div>
+
+        <div class="input-item">
+            <span class="input-label">Forecast Date</span>
+            <strong id="intelDate">—</strong>
+        </div>
+
+        <div class="input-item">
+            <span class="input-label">Store Location</span>
+            <strong id="intelLocation">—</strong>
+        </div>
+
+        <div class="input-item">
+            <span class="input-label">Inventory Level</span>
+            <strong id="intelInventory">—</strong>
+        </div>
+
+    </div>
+</section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/forecast.js"></script>
+</body>
+</html>

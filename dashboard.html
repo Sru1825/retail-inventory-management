@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Retail Intelligence | Dashboard</title>
+
+
+    <!-- Dashboard CSS -->
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                RI
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Retail Intelligence
+                </h2>
+
+                <span>
+                    Forecasting System
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- NAVIGATION -->
+
+        <nav>
+
+
+            <a
+                href="dashboard.html"
+                class="nav-item active"
+            >
+
+                <span>
+                    ▦
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+
+            <a
+                href="forecast.html"
+                class="nav-item"
+            >
+
+                <span>
+                    ⌁
+                </span>
+
+                Demand Forecasting
+
+            </a>
+
+
+
+            <a
+                href="sales.html"
+                class="nav-item"
+            >
+
+                <span>
+                    ◫
+                </span>
+
+                Sales Analytics
+
+            </a>
+
+
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+
+                <span>
+                    □
+                </span>
+
+                Products
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- SIDEBAR SYSTEM STATUS -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="system-label">
+                SYSTEM
+            </div>
+
+
+            <div class="online">
+
+                <span></span>
+
+                Backend connected
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <header class="page-header">
+
+
+            <div>
+
+
+                <div class="eyebrow">
+                    RETAIL INTELLIGENCE
+                </div>
+
+
+                <h1>
+                    Dashboard
+                </h1>
+
+
+                <p>
+                    Monitor sales performance, inventory levels
+                    and stock conditions in one place.
+                </p>
+
+
+            </div>
+
+
+
+            <!-- REFRESH BUTTON -->
+
+            <button
+                id="refreshBtn"
+                class="refresh-btn"
+                type="button"
+            >
+
+                ↻ Refresh Data
+
+            </button>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             KPI CARDS
+        ================================================== -->
+
+        <section class="kpi-grid">
+
+
+
+            <!-- TOTAL SALES -->
+
+            <div class="kpi-card">
+
+
+                <div class="kpi-top">
+
+
+                    <span>
+                        TOTAL SALES
+                    </span>
+
+
+                    <div class="kpi-icon">
+                        ↗
+                    </div>
+
+
+                </div>
+
+
+                <h2 id="totalSales">
+                    —
+                </h2>
+
+
+                <p>
+                    Recorded sales quantity
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CURRENT INVENTORY -->
+
+            <div class="kpi-card">
+
+
+                <div class="kpi-top">
+
+
+                    <span>
+                        CURRENT INVENTORY
+                    </span>
+
+
+                    <div class="kpi-icon">
+                        □
+                    </div>
+
+
+                </div>
+
+
+                <h2 id="totalInventory">
+                    —
+                </h2>
+
+
+                <p>
+                    Units currently tracked
+                </p>
+
+
+            </div>
+
+
+
+            <!-- PRODUCTS TRACKED -->
+
+            <div class="kpi-card">
+
+
+                <div class="kpi-top">
+
+
+                    <span>
+                        PRODUCTS TRACKED
+                    </span>
+
+
+                    <div class="kpi-icon">
+                        ◇
+                    </div>
+
+
+                </div>
+
+
+                <h2 id="productsTracked">
+                    —
+                </h2>
+
+
+                <p>
+                    Unique products
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CRITICAL ALERTS -->
+
+            <div class="kpi-card critical-card">
+
+
+                <div class="kpi-top">
+
+
+                    <span>
+                        CRITICAL ALERTS
+                    </span>
+
+
+                    <div class="kpi-icon alert-icon">
+                        !
+                    </div>
+
+
+                </div>
+
+
+                <h2 id="criticalAlerts">
+                    —
+                </h2>
+
+
+                <p>
+                    Products requiring attention
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN DASHBOARD GRID
+        ================================================== -->
+
+        <section class="dashboard-grid">
+
+
+
+            <!-- =================================================
+                 INVENTORY STATUS
+            ================================================== -->
+
+            <div class="panel inventory-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h2>
+                            Inventory Status
+                        </h2>
+
+
+                        <p>
+                            Current stock condition from
+                            forecasting logic.
+                        </p>
+
+                    </div>
+
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="inventory-status">
+
+
+                    <div class="status-circle">
+                        !
+                    </div>
+
+
+                    <div>
+
+                        <h3 id="statusTitle">
+                            Loading...
+                        </h3>
+
+
+                        <p id="statusText">
+                            Checking current inventory conditions.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- INVENTORY STATISTICS -->
+
+                <div class="inventory-stats">
+
+
+                    <div>
+
+                        <span>
+                            WARNING
+                        </span>
+
+
+                        <strong id="warningAlerts">
+                            —
+                        </strong>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <span>
+                            PRODUCTS
+                        </span>
+
+
+                        <strong id="statusProducts">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUICK ACTIONS
+            ================================================== -->
+
+            <div class="panel actions-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+
+                        <p>
+                            Access the main project modules.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- FORECAST -->
+
+                <a
+                    href="forecast.html"
+                    class="action-card"
+                >
+
+
+                    <div>
+
+
+                        <strong>
+                            Demand Forecasting
+                        </strong>
+
+
+                        <span>
+                            Predict future demand and
+                            inventory requirements
+                        </span>
+
+
+                    </div>
+
+
+                    <b>
+                        →
+                    </b>
+
+
+                </a>
+
+
+
+                <!-- SALES -->
+
+                <a
+                    href="sales.html"
+                    class="action-card"
+                >
+
+
+                    <div>
+
+
+                        <strong>
+                            Sales Analytics
+                        </strong>
+
+
+                        <span>
+                            Analyse historical sales
+                            performance
+                        </span>
+
+
+                    </div>
+
+
+                    <b>
+                        →
+                    </b>
+
+
+                </a>
+
+
+
+                <!-- PRODUCTS -->
+
+                <a
+                    href="products.html"
+                    class="action-card"
+                >
+
+
+                    <div>
+
+
+                        <strong>
+                            Product Details
+                        </strong>
+
+
+                        <span>
+                            Explore products and inventory
+                            information
+                        </span>
+
+
+                    </div>
+
+
+                    <b>
+                        →
+                    </b>
+
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SYSTEM STATUS
+        ================================================== -->
+
+        <section class="panel system-panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+
+                    <h2>
+                        System Status
+                    </h2>
+
+
+                    <p>
+                        Current connection status of the
+                        retail intelligence system.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BACKEND -->
+
+            <div class="system-row">
+
+
+                <div class="system-name">
+
+
+                    <span class="system-dot"></span>
+
+
+                    Flask Backend API
+
+
+                </div>
+
+
+                <strong id="backendStatus">
+                    Checking...
+                </strong>
+
+
+            </div>
+
+
+
+            <!-- DATA -->
+
+            <div class="system-row">
+
+
+                <div class="system-name">
+
+
+                    <span class="system-dot"></span>
+
+
+                    Retail Data
+
+
+                </div>
+
+
+                <strong id="dataStatus">
+                    Checking...
+                </strong>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYTICS CHARTS
+        ================================================== -->
+
+        <section class="charts-grid">
+
+
+
+            <!-- =================================================
+                 SALES TREND
+            ================================================== -->
+
+            <div class="panel chart-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Sales Trend
+                        </h2>
+
+
+                        <p>
+                            Historical sales performance over time.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="chart-container">
+
+
+                    <canvas
+                        id="salesTrendChart"
+                    ></canvas>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INVENTORY STATUS CHART
+            ================================================== -->
+
+            <div class="panel chart-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Inventory Status
+                        </h2>
+
+
+                        <p>
+                            Current inventory condition.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    class="chart-container small-chart"
+                >
+
+
+                    <canvas
+                        id="inventoryChart"
+                    ></canvas>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TOP PRODUCTS
+            ================================================== -->
+
+            <div
+                class="panel chart-panel full-chart"
+            >
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Top Products by Sales
+                        </h2>
+
+
+                        <p>
+                            Products with the highest recorded sales.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="chart-container">
+
+
+                    <canvas
+                        id="topProductsChart"
+                    ></canvas>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ERROR BOX
+        ================================================== -->
+
+        <div
+            id="errorBox"
+            class="error-box hidden"
+        ></div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CHART.JS
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+
+    <!-- =====================================================
+         DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/dashboard.js"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Retail Intelligence | Sales Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="css/sales.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                RI
+            </div>
+
+            <div>
+
+                <h2>
+                    Retail Intelligence
+                </h2>
+
+                <span>
+                    Forecasting System
+                </span>
+
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a
+                href="forecast.html"
+                class="nav-item"
+            >
+                <span>⌁</span>
+                Demand Forecasting
+            </a>
+
+            <a
+                href="sales.html"
+                class="nav-item active"
+            >
+                <span>◫</span>
+                Sales Analytics
+            </a>
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span>□</span>
+                Products
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="system-label">
+                SYSTEM
+            </div>
+
+            <div class="online">
+
+                <span></span>
+
+                Backend connected
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="page-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    RETAIL INTELLIGENCE
+                </div>
+
+                <h1>
+                    Sales Analytics
+                </h1>
+
+                <p>
+                    Analyse historical sales performance,
+                    product demand and store-level activity.
+                </p>
+
+            </div>
+
+            <button
+                id="refreshBtn"
+                class="refresh-btn"
+                type="button"
+            >
+                ↻ Refresh Data
+            </button>
+
+        </header>
+
+
+        <!-- KPI CARDS -->
+
+        <section class="kpi-grid">
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span>
+                        TOTAL SALES
+                    </span>
+
+                    <div class="kpi-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <h2 id="totalSales">
+                    —
+                </h2>
+
+                <p>
+                    Total recorded sales quantity
+                </p>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span>
+                        PRODUCTS
+                    </span>
+
+                    <div class="kpi-icon">
+                        ◇
+                    </div>
+
+                </div>
+
+                <h2 id="productsTracked">
+                    —
+                </h2>
+
+                <p>
+                    Unique products analysed
+                </p>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span>
+                        STORES
+                    </span>
+
+                    <div class="kpi-icon">
+                        ⌂
+                    </div>
+
+                </div>
+
+                <h2 id="storesTracked">
+                    —
+                </h2>
+
+                <p>
+                    Store locations tracked
+                </p>
+
+            </div>
+
+
+            <div class="kpi-card">
+
+                <div class="kpi-top">
+
+                    <span>
+                        SALES RECORDS
+                    </span>
+
+                    <div class="kpi-icon">
+                        #
+                    </div>
+
+                </div>
+
+                <h2 id="salesRecords">
+                    —
+                </h2>
+
+                <p>
+                    Historical records analysed
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARTS -->
+
+        <section class="charts-grid">
+
+
+            <!-- MONTHLY SALES -->
+
+            <div class="panel chart-panel large-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Monthly Sales Trend
+                        </h2>
+
+                        <p>
+                            Total sales quantity recorded each month.
+                        </p>
+
+                    </div>
+
+                    <span class="live-badge">
+                        LIVE DATA
+                    </span>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="monthlySalesChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- SALES BY LOCATION -->
+
+            <div class="panel chart-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Sales by Location
+                        </h2>
+
+                        <p>
+                            Sales distribution across stores.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="locationSalesChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOP PRODUCTS -->
+
+            <div class="panel chart-panel full-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Top Products by Sales
+                        </h2>
+
+                        <p>
+                            Products generating the highest recorded sales.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="topProductsChart"
+                    ></canvas>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- DATA STATUS -->
+
+        <section class="panel status-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Data Status
+                    </h2>
+
+                    <p>
+                        Current sales data connection.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-name">
+
+                    <span class="status-dot"></span>
+
+                    Flask Backend API
+
+                </div>
+
+                <strong id="backendStatus">
+                    Checking...
+                </strong>
+
+            </div>
+
+
+            <div class="status-row">
+
+                <div class="status-name">
+
+                    <span class="status-dot"></span>
+
+                    Sales Dataset
+
+                </div>
+
+                <strong id="dataStatus">
+                    Checking...
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <div
+            id="errorBox"
+            class="error-box hidden"
+        ></div>
+
+
+    </main>
+
+
+    <!-- CHART.JS -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+
+    <!-- SALES JS -->
+
+    <script
+        src="js/sales.js"
+    ></script>
+
+</body>
+
+</html>
