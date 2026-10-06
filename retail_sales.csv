@@ -1,0 +1,15 @@
+product,date,store_location,sales,inventory
+Laptop Bag,2026-09-18,Visakhapatnam,20,80
+Laptop Bag,2026-09-19,Visakhapatnam,25,65
+Laptop Bag,2026-09-20,Visakhapatnam,22,50
+Laptop Bag,2026-09-21,Visakhapatnam,30,40
+Laptop Bag,2026-09-22,Visakhapatnam,28,25
+Laptop Bag,2026-09-23,Visakhapatnam,35,15
+Laptop Bag,2026-09-24,Visakhapatnam,32,10
+Water Bottle,2026-09-18,Vizianagaram,10,120
+Water Bottle,2026-09-19,Vizianagaram,12,110
+Water Bottle,2026-09-20,Vizianagaram,11,98
+Water Bottle,2026-09-21,Vizianagaram,14,84
+Water Bottle,2026-09-22,Vizianagaram,13,71
+Water Bottle,2026-09-23,Vizianagaram,15,60
+Water Bottle,2026-09-24,Vizianagaram,16,44
